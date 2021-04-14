@@ -1,7 +1,6 @@
-![](assets/solidity.png)
+# `solidity-lang`
 
-# solidity-lang
-
+> [soliditylang.org](https://soliditylang.org/)
 
 ## Features
 
