@@ -4,8 +4,8 @@
     "description": "solidity syntax highlighting, thats it",
     "publisher": "ContractShark",
     "license": "MIT",
-   "repository": "git@github.com:contractshark/vscode-extenstion.git",
-    "version": "0.0.1",
+    "repository": "git@github.com:contractshark/vscode-extenstion.git",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.55.0"
     },
@@ -13,16 +13,26 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "solidity",
-            "aliases": ["Solidity", "solidity"],
-            "extensions": [".sol",".solidity"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "solidity",
-            "scopeName": "source.solidity",
-            "path": "./syntaxes/solidity.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "solidity",
+                "aliases": [
+                    "Solidity",
+                    "solidity"
+                ],
+                "extensions": [
+                    ".sol",
+                    ".solidity"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "solidity",
+                "scopeName": "source.solidity",
+                "path": "./syntaxes/solidity.tmLanguage.json"
+            }
+        ]
     }
 }
