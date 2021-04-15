@@ -1,6 +1,13 @@
-# `solidity-lang`
 
-> sytnax highlighting extenstion without plugins
+<p align="center">
+<img src='assets/icon.png' width=64>
+	<h1 align="center">solidity-lang</h1>
+ <h3 align="center"> visual studio code syntax highlight </h3>
+ <p align="center">
+<align="center">
+  
+
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
 
 ## Motivation
 
