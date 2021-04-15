@@ -11,7 +11,8 @@
         "vscode": "^1.55.0"
     },
     "scripts": {
-        "build": "npx vscode package",
+        "ci": "npm i -g vsce && npm run build",
+        "build": "vsce package",
         "test": " ./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json"
     },
     "categories": [
