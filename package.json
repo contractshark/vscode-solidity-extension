@@ -3,11 +3,16 @@
     "displayName": "solidity-syntax",
     "description": "solidity syntax highlighting, thats it",
     "publisher": "ContractShark",
+    "icon": "assets/icon.png",
     "license": "MIT",
     "repository": "https://github.com/contractshark/vscode-extenstion.git",
     "version": "1.0.0",
     "engines": {
         "vscode": "^1.55.0"
+    },
+    "scripts": {
+        "build": "npx vscode package",
+        "test": " ./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json"
     },
     "categories": [
         "Programming Languages"
@@ -34,5 +39,9 @@
                 "path": "./syntaxes/solidity.tmLanguage.json"
             }
         ]
+    },
+    "devDependencies": {
+        "ajv": "^8.1.0",
+        "ajv-cli": "^5.0.0"
     }
 }
