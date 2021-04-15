@@ -5,9 +5,14 @@
  <h3 align="center"> visual studio code syntax highlight </h3>
  <p align="center">
 <align="center">
-  
+
+-------------
+<br>
+
+[![nodejs](https://github.com/contractshark/vscode-extenstion/actions/workflows/nodejs-ci.yml/badge.svg)](https://github.com/contractshark/vscode-extenstion/actions/workflows/nodejs-ci.yml)
 
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
+
 
 ## Motivation
 
