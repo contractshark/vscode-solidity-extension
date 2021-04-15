@@ -4,8 +4,8 @@
     "description": "solidity syntax highlighting, thats it",
     "publisher": "ContractShark",
     "license": "MIT",
-    "repository": "git@github.com:contractshark/vscode-extenstion.git",
-    "version": "0.0.2",
+    "repository": "https://github.com/contractshark/vscode-extenstion.git",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.55.0"
     },
