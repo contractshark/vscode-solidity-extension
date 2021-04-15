@@ -1,20 +1,16 @@
-# solidity-lang
+# `solidity-lang`
 
+> [soliditylang.org](https://soliditylang.org/)
 
 ## Features
 
-\!\[feature X\]\(images/feature-x.png\)
+- Solidity Syntax Highlight, nothing else
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* `solidity-lang.enable`: enable/disable this extension
 
 ## License
 
