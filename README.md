@@ -46,4 +46,6 @@ This extension contributes the following settings:
 
 ## License
 
-MIT
+SPDX-License-Identifier: MIT
+
+See `CopyrightNotice.txt` for Additional Licenses and Copyrights
