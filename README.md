@@ -9,7 +9,6 @@
 -------------
 <br>
 
-[![nodejs](https://github.com/contractshark/vscode-extenstion/actions/workflows/nodejs-ci.yml/badge.svg)](https://github.com/contractshark/vscode-extenstion/actions/workflows/nodejs-ci.yml)
 
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
 
