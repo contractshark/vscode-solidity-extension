@@ -1,0 +1,8 @@
+/**
+* SPDX-License-Identifier: CC-BY-4.0
+* 
+* The Solidity logo is distributed and licensed under a Creative Commons Attribution 4.0 International License.
+* <https://docs.soliditylang.org/en/latest/brand-guide.html#solidity-logo-license>
+* <https://creativecommons.org/licenses/by/4.0/legalcode>
+*
+*/
