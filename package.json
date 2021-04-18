@@ -6,14 +6,15 @@
     "icon": "assets/icon.png",
     "license": "MIT",
     "repository": "https://github.com/contractshark/vscode-extenstion.git",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "engines": {
         "vscode": "^1.55.0"
     },
     "scripts": {
         "ci": "npm i -g vsce && npm run build",
         "build": "vsce package",
-        "test": " ./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json"
+        "test": "./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json",
+        "test-vsc": "node ./node_modules/vscode/bin/test ./test"
     },
     "categories": [
         "Programming Languages"
