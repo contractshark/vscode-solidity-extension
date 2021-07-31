@@ -1,20 +1,20 @@
 {
-    "name": "solidity-lang",
-    "displayName": "solidity-syntax",
-    "description": "solidity syntax highlighting, thats it",
-    "publisher": "ContractShark",
-    "icon": "assets/icon.png",
-    "license": "MIT",
-    "repository": "https://github.com/contractshark/vscode-extenstion.git",
-    "version": "1.0.1",
-    "engines": {
-        "vscode": "^1.55.0"
-    },
+  "name": "solidity-lang",
+  "displayName": "solidity-syntax",
+  "description": "solidity syntax highlighting, thats it",
+  "publisher": "ContractShark",
+  "icon": "assets/icon.png",
+  "license": "MIT",
+  "repository": "https://github.com/contractshark/vscode-extenstion.git",
+  "version": "1.0.2",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
   "activationEvents": [
     "onLanguage:solidity"
   ],
-"main": "./out/src/extension",
-"dependencies": {
+  "main": "./out/src/extension",
+  "dependencies": {
     "ajv": "^6.10.2",
     "ajv-keywords": "^3.4.1",
     "find-cache-dir": "^2.1.0",
@@ -25,40 +25,36 @@
     "vscode-uri": "2.1.2",
     "yaml-js": "0.2.3"
   },
-    "scripts": {
-        "ci": "npm i -g vsce && npm run build",
-        "build": "vsce package",
-        "prepare": "node ./node_modules/vscode/bin/install"
-        "test": " ./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "contributes": {
-        "languages": [
-            {
-                "id": "solidity",
-                "aliases": [
-                    "Solidity",
-                    "solidity"
-                ],
-                "extensions": [
-                    ".sol",
-                    ".solidity"
-                ],
-                "configuration": "./language-configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "solidity",
-                "scopeName": "source.solidity",
-                "path": "./syntaxes/solidity.tmLanguage.json"
-            }
-        ]
-    },
-    "devDependencies": {
-        "ajv": "^8.1.0",
-        "ajv-cli": "^5.0.0"
-    }
+  "scripts": {
+    "ci": "npm i -g vsce && npm run build",
+    "build": "vsce package",
+    "prepare": "node ./node_modules/vscode/bin/install",
+    "test": " ./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "solidity",
+      "aliases": [
+        "Solidity",
+        "solidity"
+      ],
+      "extensions": [
+        ".sol",
+        ".solidity"
+      ],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "solidity",
+      "scopeName": "source.solidity",
+      "path": "./syntaxes/solidity.tmLanguage.json"
+    }]
+  },
+  "devDependencies": {
+    "ajv": "^8.1.0",
+    "ajv-cli": "^5.0.0"
+  }
 }
