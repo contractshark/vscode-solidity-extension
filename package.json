@@ -12,12 +12,16 @@
     },
     "scripts": {
         "ci": "npm i -g vsce && npm run build",
-        "build": "vsce package",
-        "test": " ./node_modules/.bin/ajv -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json"
+        "build": "npx vsce package",
+        "test": "npx ajv-cli test -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json --valid"
     },
     "categories": [
         "Programming Languages"
     ],
+    "activationEvents": [
+        "onLanguage:solidity"
+    ],
+    "main": "./extension",
     "contributes": {
         "languages": [
             {
@@ -43,6 +47,8 @@
     },
     "devDependencies": {
         "ajv": "^8.1.0",
-        "ajv-cli": "^5.0.0"
+        "ajv-cli": "^5.0.0",
+        "prettier": "^2.3.2",
+        "vsce": "^1.96.1"
     }
 }

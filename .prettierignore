@@ -1,0 +1,9 @@
+build/
+dist/
+*.css
+*.html
+*.xml
+*.tmLanguage.json
+*.solidity.json
+*.abi.json
+

@@ -135,7 +135,7 @@
             ]
         },
         "comment-line": {
-
+            
             "begin": "(?<!tp:)//",
             "end": "$",
             "name": "comment.line.solidity",
@@ -335,7 +335,7 @@
         },
         "global-variables": {
             "patterns": [
-
+                
                 {
                     "match": "\\b(this)\\b",
                     "name": "variable.language.this.solidity"
@@ -350,7 +350,7 @@
                 },
                 {
                     "match": "\\b(tx\\.origin|tx\\.gasprice|msg\\.data|msg\\.sig|msg\\.value)\\b",
-                    "name": "variable.language.transaction.solidity"
+                    "name": "variable.language.transaction.security.solidity"
                 },
                 {
                     "match": "\\b(msg\\.sender|msg|block|tx|now)\\b",
@@ -382,7 +382,7 @@
                 },
                 {
                     "match": "\\b\\.(send|call|delegatecall|staticcall|callcode|creationCode|runtimeCode)\\b",
-                    "name": "support.function.transaction.solidity"
+                    "name": "support.function.transaction.security.solidity"
                 },
                 {
                     "match": "\\b\\.(transfer)\\b",
@@ -417,7 +417,7 @@
                 {
                     "include": "#declaration-function"
                 },
-
+                
                 {
                     "include": "#declaration-constructor"
                 },
@@ -520,7 +520,7 @@
                 {
                     "include": "#method-head"
                 }
-
+                
             ]
         },
         "declaration-function-fallback": {
@@ -547,7 +547,7 @@
                 {
                     "include": "#method-head"
                 }
-
+                
             ]
         },
         "declaration-modifier": {
@@ -664,6 +664,6 @@
 			"name": "keyword.comment.todo.solidity"
 		}
     },
-    "scopeName": "source.solidity",
+    "scopeName": "source.solidity.security",
     "uuid": "ad87d2cd-8575-4afe-984e-9421a3788933"
 }

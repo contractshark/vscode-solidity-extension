@@ -1,4 +1,15 @@
+*.vsce
 node_modules
 *.vsix
 .DS_Store
 node_modules
+*.tar.gz
+*.tgz
+*.zip
+*.tar
+dist/
+build/
+cache
+.cache/
+*.log
+*-error.
