@@ -6,7 +6,7 @@
     "icon": "assets/icon.png",
     "license": "MIT",
     "repository": "https://github.com/contractshark/vscode-extenstion.git",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "engines": {
         "vscode": "^1.55.0"
     },
