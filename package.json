@@ -1,12 +1,12 @@
 {
     "name": "solidity-lang",
     "displayName": "solidity-syntax",
-    "description": "solidity syntax highlighting, thats it",
+    "description": "solidity syntax highlighting with EIP1559 Support",
     "publisher": "ContractShark",
     "icon": "assets/icon.png",
     "license": "MIT",
     "repository": "https://github.com/contractshark/vscode-extenstion.git",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "engines": {
         "vscode": "^1.55.0"
     },
