@@ -10,8 +10,8 @@
 <br>
 
 
-[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
-
+![](https://badgen.net/vs-marketplace/v/contractshark.solidity-lang)
+[![solidity - v0.6.12](https://img.shields.io/badge/solidity-v0.9.0-2ea44f?logo=solidity)](https://github.com/manifoldfinance)
 
 ## Motivation
 
@@ -31,7 +31,9 @@ having to give up basic functionality.
 
 - see the additional `.vscode/settings` for better git workspace environment
 
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
 
+			   
 ## Extension Settings
 
 This extension contributes the following settings:

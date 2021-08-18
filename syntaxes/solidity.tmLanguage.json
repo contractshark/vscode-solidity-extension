@@ -318,8 +318,26 @@
         "1": {
           "name": "keyword.control.pragma"
         },
-        "2": {
-          "name": "entity.name.tag.pragma"
+        "comment": {
+            "patterns": [
+                {
+                    "include": "#comment-line"
+                },
+                {
+                    "include": "#comment-block"
+                }
+            ]
+        },
+        "comment-line": {
+
+            "begin": "(?<!tp:)//",
+            "end": "$",
+            "name": "comment.line.solidity",
+            "patterns": [
+                {
+                    "include": "#comment-todo"
+                }
+            ]
         },
         "3": {
           "name": "constant.other.pragma"
@@ -609,14 +627,101 @@
         {
           "include": "#type-modifier-access"
         },
-        {
-          "include": "#type-modifier-immutable"
+        "global-variables": {
+            "patterns": [
+
+                {
+                    "match": "\\b(this)\\b",
+                    "name": "variable.language.this.solidity"
+                },
+                {
+                    "match": "\\b(super)\\b",
+                    "name": "variable.language.super.solidity"
+                },
+                {
+                    "match": "\\b(abi)\\b",
+                    "name": "variable.language.builtin.abi.solidity"
+                },
+                {
+                    "match": "\\b(tx\\.origin|tx\\.gasprice|msg\\.data|msg\\.sig|msg\\.value)\\b",
+                    "name": "variable.language.transaction.solidity"
+                },
+                {
+                    "match": "\\b(msg\\.sender|msg|block|tx|now)\\b",
+                    "name": "variable.language.transaction.solidity"
+                }
+            ]
         },
-        {
-          "include": "#type-modifier-extend-scope"
+        "global-functions": {
+            "patterns": [
+                {
+                    "match": "\\b(require|assert|revert)\\b",
+                    "name": "keyword.control.exceptions.solidity"
+                },
+                {
+                    "match": "\\b(selfdestruct|suicide)\\b",
+                    "name": "keyword.control.contract.solidity"
+                },
+                {
+                    "match": "\\b(addmod|mulmod|keccak256|sha256|sha3|ripemd160|ecrecover)\\b",
+                    "name": "support.function.math.solidity"
+                },
+                {
+                    "match": "\\b(blockhash|gasleft)\\b",
+                    "name": "variable.language.transaction.solidity"
+                },
+                {
+                    "match": "\\b(type)\\b",
+                    "name": "variable.language.type.solidity"
+                },
+                {
+                    "match": "\\b\\.(send|call|delegatecall|staticcall|callcode|creationCode|runtimeCode)\\b",
+                    "name": "support.function.transaction.solidity"
+                },
+                {
+                    "match": "\\b\\.(transfer)\\b",
+                    "name": "support.function.transaction.solidity"
+                }
+            ]
         },
-        {
-          "include": "#type-modifier-payable"
+        "declaration": {
+            "patterns": [
+                {
+                    "include": "#declaration-contract"
+                },
+                {
+                    "include": "#declaration-interface"
+                },
+                {
+                    "include": "#declaration-library"
+                },
+                {  "include": "#declaration-visibility"},
+                {
+                    "include": "#declaration-struct"
+                },
+                {
+                    "include": "#declaration-event"
+                },
+                {
+                    "include": "#declaration-enum"
+                },
+                {
+                    "include": "#declaration-function-fallback"
+                },
+                {
+                    "include": "#declaration-function"
+                },
+
+                {
+                    "include": "#declaration-constructor"
+                },
+                {
+                    "include": "#declaration-modifier"
+                },
+                {
+                    "include": "#declaration-mapping"
+                }
+            ]
         },
         {
           "include": "#type-modifier-constant"
@@ -846,7 +951,20 @@
               "end": "(?=\\{)",
               "patterns": [
                 {
-                  "include": "#type-modifier-access"
+                    "include": "#method-head"
+                }
+
+            ]
+        },
+        "declaration-function-fallback": {
+            "match": "\\b(function)\\s*\\(\\s*\\)",
+            "name": "storage.type.function.fallback.solidity"
+        },
+        "declaration-function": {
+            "begin": "\\b(function)\\s+([A-Za-z_]\\w*)\\b",
+            "beginCaptures": {
+                "1": {
+                    "name": "storage.type.function.solidity"
                 },
                 {
                   "include": "#function-call"
@@ -883,10 +1001,12 @@
               "match": "\\b(\\w+)\\b",
               "name": "variable.other.enummember"
             },
-            {
-              "include": "#punctuation"
-            }
-          ]
+            "patterns": [
+                {
+                    "include": "#method-head"
+                }
+
+            ]
         },
         {
           "match": "\\b(enum)(\\s+([A-Za-z_]\\w*))?\\b",
@@ -1157,11 +1277,6 @@
         }
       ]
     },
-    "comment-todo": {
-  "match": "(?i)\\b(FIXME|NOTE|AUDITTODO|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|COMBAK|TEMP|SUPPRESS|LINT|\\w+-disable|\\w+-suppress)\\b(?-i)",
-  "name": "keyword.comment.todo.solidity"
-}
-},
-"scopeName": "source.solidity",
-"version": "0.8.7"
+    "scopeName": "source.solidity",
+    "uuid": "ad87d2cd-8575-4afe-984e-9421a3788933"
 }
