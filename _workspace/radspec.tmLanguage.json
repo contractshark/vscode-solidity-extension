@@ -1,0 +1,168 @@
+{
+    "injectionSelector": "L:comment.block.documentation",
+    "patterns": [{
+            "include": "#radspec"
+        },
+        {
+            "include": "#natspec"
+        },
+        {
+            "include": "#comment"
+        },
+        {
+            "include": "#operator"
+        },
+        {
+            "include": "#global"
+        },
+        {
+            "include": "#control"
+        },
+        {
+            "include": "#constant"
+        },
+        {
+            "include": "#primitive"
+        },
+        {
+            "include": "#type-primitive"
+        },
+        {
+            "include": "#type-modifier-extended-scope"
+        },
+        {
+            "include": "#declaration"
+        },
+        {
+            "include": "#function-call"
+        },
+        {
+            "include": "#assembly"
+        },
+        {
+            "include": "#punctuation"
+        }
+    ],
+    "repository": {
+        "natspec": {
+            "patterns": [{
+                    "begin": "/\\*\\*",
+                    "end": "\\*/",
+                    "name": "comment.block.documentation",
+                    "patterns": [{
+                        "include": "#natspec-tags"
+                    }]
+                },
+                {
+                    "begin": "///",
+                    "end": "$",
+                    "name": "comment.block.documentation",
+                    "patterns": [{
+                        "include": "#natspec-tags"
+                    }]
+                }
+            ]
+        },
+        "natspec-tags": {
+            "patterns": [{
+                    "include": "#comment-todo"
+                },
+                {
+                    "include": "#natspec-tag-title"
+                },
+                {
+                    "include": "#natspec-tag-author"
+                },
+                {
+                    "include": "#natspec-tag-notice"
+                },
+                {
+                    "include": "#natspec-tag-dev"
+                },
+                {
+                    "include": "#natspec-tag-param"
+                },
+                {
+                    "include": "#natspec-tag-return"
+                }
+            ]
+        },
+        "natspec-tag-title": {
+            "match": "(@title)\\b",
+            "name": "storage.type.title.natspec"
+        },
+        "natspec-tag-author": {
+            "match": "(@author)\\b",
+            "name": "storage.type.author.natspec"
+        },
+        "natspec-tag-notice": {
+            "match": "(@notice)\\b",
+            "name": "storage.type.dev.natspec"
+        },
+        "natspec-tag-dev": {
+            "match": "(@dev)\\b",
+            "name": "storage.type.dev.natspec"
+        },
+        "natspec-tag-param": {
+            "match": "(@param)(\\s+([A-Za-z_]\\w*))?\\b",
+            "captures": {
+                "1": {
+                    "name": "storage.type.param.natspec"
+                },
+                "3": {
+                    "name": "variable.other.natspec"
+                }
+            }
+        },
+        "natspec-tag-return": {
+            "match": "(@return)\\b",
+            "name": "storage.type.return.natspec"
+        },
+        "comment": {
+            "patterns": [{
+                    "include": "#comment-line"
+                },
+                {
+                    "include": "#comment-block"
+                }
+            ]
+        },
+        "comment-todo": {
+            "match": "(?i)\\b(FIXME|TODO|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|COMBAK|TEMP|SUPPRESS|LINT|\\w+-disable|\\w+-suppress)\\b(?-i)",
+            "name": "keyword.comment.todo"
+        },
+        "comment-line": {
+            "begin": "(?<!tp:)//",
+            "end": "$",
+            "name": "comment.line",
+            "patterns": [{
+                "include": "#comment-todo"
+            }]
+        },
+        "comment-block": {
+            "begin": "/\\*",
+            "end": "\\*/",
+            "name": "comment.block",
+            "patterns": [{
+                "include": "#comment-todo"
+            }]
+        },
+        "example": {
+            "begin": "((@)example)\\s+(?=([^*]|[*](?!/))*$).*$",
+            "while": "(^|\\G)\\s(?!@)(?=([^*]|[*](?!/))*$)",
+            "beginCaptures": {
+                "1": {
+                    "name": "storage.type.class.natspec"
+                },
+                "2": {
+                    "name": "punctuation.definition.block.tag.natspec"
+                }
+            },
+            "contentName": "meta.embedded.block.example.source.solidity",
+            "patterns": [{
+                "include": "source.solidity"
+            }]
+        }
+    },
+    "scopeName": "documentation.injection.natspec"
+}
