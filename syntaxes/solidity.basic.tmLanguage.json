@@ -1,0 +1,213 @@
+{
+  "fileTypes": [
+    "sol"
+  ],
+  "name": "Solidity",
+  "patterns": [
+    {
+      "comment": "Comments",
+      "match": "\\/\\/.*",
+      "name": "comment"
+    },
+    {
+      "begin": "(\\/\\*)",
+      "comment": "Multiline comments",
+      "end": "(\\*\\/)",
+      "name": "comment"
+    },
+    {
+      "captures": {
+        "2": {
+          "name": "support.function"
+        }
+      },
+      "comment": "Events",
+      "match": "\\b(event|enum)\\s+([A-Za-z_]\\w*)\\b",
+      "name": "keyword.control"
+    },
+    {
+      "captures": {
+        "2": {
+          "name": "entity.name.function"
+        },
+        "3": {
+          "name": "entity.name.function"
+        }
+      },
+      "comment": "Structures, function, event definitions",
+      "match": "\\b(contract|interface|library|using|struct|function|constructor|modifier)(\\s+[A-Za-z_]\\w*)?(?:\\s+is\\s+((?:[A-Za-z_][\\,\\s]*)*))?\\b",
+      "name": "keyword.control"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.language"
+        },
+        "2": {
+          "name": "constant.numeric"
+        },
+        "3": {
+          "name": "constant.numeric"
+        },
+        "4": {
+          "name": "keyword.control"
+        },
+        "5": {
+          "name": "variable.parameter"
+        }
+      },
+      "comment": "Built-in types",
+      "match": "\\b(address\\s*payable|address|string|bytes?\\d*|int\\d*|uint\\d*|bool|u?fixed\\d+x\\d+)\\s*(?:\\[(\\d*)\\])?\\s*(?:\\[(\\d*)\\])?\\s*(?:(indexed|memory|storage|calldata|payable)?\\s*(\\b[A-Za-z_]\\w*)?\\s*)?(?=[,\\)])"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.language"
+        },
+        "2": {
+          "name": "constant.language"
+        },
+        "3": {
+          "name": "constant.language"
+        },
+        "4": {
+          "name": "keyword.control"
+        }
+      },
+      "comment": "Mapping definition",
+      "match": "\\b(mapping)\\s*\\((.*)\\s+=>\\s+(.*)\\)(\\s+(?:private|public|internal|external))?\\s+([A-Za-z_]\\w*)\\b"
+    },
+    {
+      "comment": "True and false keywords",
+      "match": "\\b(true|false)\\b",
+      "name": "constant.language"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.language"
+        },
+        "2": {
+          "name": "constant.numeric"
+        },
+        "3": {
+          "name": "constant.numeric"
+        },
+        "4": {
+          "name": "keyword.control"
+        }
+      },
+      "comment": "Variable definitions - bytes data; | uint x = uint(y);",
+      "match": "\\b(address\\s*payable|address|string|bytes?\\d*|int\\d*|uint\\d*|bool|u?fixed\\d+x\\d+)(?:\\s*\\[(\\d*)\\])?(?:\\s*\\[(\\d*)\\])?\\s*(private|public|internal|external|constant|memory|storage)?\\s+(?:[A-Za-z_]\\w*)\\s*[\\;\\=]"
+    },
+    {
+      "comment": "Langauge keywords",
+      "match": "\\b(var|import|constant|pragma|payable|storage|memory|calldata|if|else|for|while|do|break|continue|returns?|try|catch|private|public|pure|view|internal|external|virtual|override|abstract|this|suicide|selfdestruct|delegatecall|emit|new|is|throw|revert|assert|require|receive|fallback\\_)\\b",
+      "name": "keyword.control"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "variable.parameter"
+        }
+      },
+      "comment": "Variable definitions - bytes data; | uint x = uint(y);",
+      "match": "\\b([A-Za-z_]\\w*)\\s*\\:\\s*"
+    },
+    {
+      "comment": "Operators",
+      "match": "(=|!|>|<|\\||&|\\?|:|\\^|~|\\*|\\+|\\-|\\/|\\%|\\bhex\\b)",
+      "name": "keyword.control"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.language"
+        },
+        "2": {
+          "name": "constant.language"
+        }
+      },
+      "comment": "msg and block special usage",
+      "match": "\\b(msg|block|tx|abi)\\.([A-Za-z_]\\w*)\\b"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.language"
+        }
+      },
+      "comment": "Now and delete",
+      "match": "\\b(now|delete)\\b"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.language"
+        }
+      },
+      "comment": "Function call - built-in functions",
+      "match": "\\b(blockhash|gasleft|addmod|mulmod|keccak256|sha256|sha3|ripemd160|ecrecover)\\s*\\("
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.function"
+        },
+        "2": {
+          "name": "constant.numeric"
+        },
+        "3": {
+          "name": "constant.numeric"
+        }
+      },
+      "comment": "Function call, also for example - uint[] memory a = new uint[332](7); or uint[2][] memory arrayOfPairs = new uint[2][](size);",
+      "match": "\\b([A-Za-z_]\\w*)(?:\\[(\\d*)\\])?(?:\\[(\\d*)\\])?\\("
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.type"
+        }
+      },
+      "comment": "Special treatment for length and .selector",
+      "match": "\\b\\.(length|selector)\\b"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.numeric"
+        },
+        "2": {
+          "name": "keyword.control"
+        }
+      },
+      "comment": "Ether and time units",
+      "match": "\\b(\\d+)\\s+(wei|finney|szabo|ether|seconds|minutes|hours|days|weeks|years)\\b"
+    },
+    {
+      "comment": "Strings",
+      "match": "([\\\"\\'].*?[\\\"\\'])",
+      "name": "string.quoted"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "constant.numeric"
+        },
+        "2": {
+          "name": "constant.numeric"
+        }
+      },
+      "comment": "Numbers, possibly with scientific notation",
+      "match": "\\b(\\d+)(e\\d*)?\\b"
+    },
+    {
+      "comment": "Hexadecimal",
+      "match": "\\b(0[xX][a-fA-F0-9]+)\\b",
+      "name": "constant.numeric"
+    }
+  ],
+  "scopeName": "source.solidity",
+  "uuid": "ad87d2cd-8575-4afe-984e-9421a3788933"
+}
