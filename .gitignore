@@ -13,3 +13,5 @@ cache
 .cache/
 *.log
 *-error.
+solidity-lang-*.zip
+
