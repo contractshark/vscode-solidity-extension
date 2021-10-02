@@ -41,9 +41,6 @@
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": [
-    "onLanguage:solidity"
-  ],
   "configurationDefaults": {
     "solidity": {
       "editor.semanticHighlighting.enabled": true
