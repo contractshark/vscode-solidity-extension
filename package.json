@@ -10,6 +10,10 @@
     "engines": {
         "vscode": "^1.55.0"
     },
+ "extensionKind": [
+    "ui",
+    "workspace"
+  ],
     "scripts": {
         "ci": "npm i -g vsce && npm run build",
         "build": "npx vsce package",
