@@ -1,54 +1,85 @@
 {
-    "name": "solidity-lang",
-    "displayName": "solidity-syntax",
-    "description": "solidity syntax highlighting, thats it",
-    "publisher": "ContractShark",
-    "icon": "assets/icon.png",
-    "license": "MIT",
-    "repository": "https://github.com/contractshark/vscode-extenstion.git",
-    "version": "1.2.1",
-    "engines": {
-        "vscode": "^1.55.0"
-    },
-    "scripts": {
-        "ci": "npm i -g vsce && npm run build",
-        "build": "npx vsce package",
-        "test": "npx ajv-cli test -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json --valid"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "activationEvents": [
-        "onLanguage:solidity"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "languages": [
-            {
-                "id": "solidity",
-                "aliases": [
-                    "Solidity",
-                    "solidity"
-                ],
-                "extensions": [
-                    ".sol",
-                    ".solidity"
-                ],
-                "configuration": "./language-configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "solidity",
-                "scopeName": "source.solidity",
-                "path": "./syntaxes/solidity.tmLanguage.json"
-            }
-        ]
-    },
-    "devDependencies": {
-        "ajv": "8.1.0",
-        "ajv-cli": "5.0.0",
-        "prettier": "2.3.2",
-        "vsce": "^1.96.1"
+  "name": "solidity-lang",
+  "displayName": "solidity-syntax",
+  "description": "solidity syntax highlighting, thats it",
+  "publisher": "ContractShark",
+  "icon": "assets/icon.png",
+  "license": "MIT",
+  "version": "1.2.1",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "blockchain",
+    "security",
+    "audit",
+    "review",
+    "developer",
+    "solidity security",
+    "solidity audit",
+    "language",
+    "theme"
+  ],
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "scripts": {
+    "ci": "npm i -g vsce && npm run build",
+    "build": "npx vsce package",
+    "test": "npx ajv-cli test -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json --valid"
+  },
+  "bugs": {
+    "url": "https://github.com/contractshark/scode-extenstion/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contractshark/vscode-extenstion.git"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:solidity"
+  ],
+  "configurationDefaults": {
+    "solidity": {
+      "editor.semanticHighlighting.enabled": true
     }
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "solidity",
+        "aliases": [
+          "Solidity",
+          "solidity"
+        ],
+        "extensions": [
+          ".sol",
+          ".solidity"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "solidity",
+        "scopeName": "source.solidity",
+        "path": "./syntaxes/solidity.tmLanguage.json",
+        "injectTo": [
+          "source.solidity"
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@vscode/test-web": "^0.0.15",
+    "ajv": "8.1.0",
+    "ajv-cli": "5.0.0",
+    "prettier": "2.3.2",
+    "vsce": "^1.96.1"
+  }
 }
