@@ -29,6 +29,8 @@ to add without having to give up basic functionality.
 
 - Semantic Syntax Support
 
+- Remote Container / Container support
+
 - NatSpec Supported Highlighting
 
 - Support ^0.5.0 to <0.9.0
