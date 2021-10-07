@@ -9,9 +9,13 @@
 
 <br>
 
-[![vscode marketplace](https://badgen.net/vs-marketplace/v/contractshark.solidity-lang)](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
+<span align="center">
 
-[![solidity - <0.9.0](https://img.shields.io/badge/solidity-v0.9.0-2ea44f?logo=solidity)](https://github.com/manifoldfinance)
+
+[![vscode marketplace](https://badgen.net/vs-marketplace/v/contractshark.solidity-lang)](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang) ![Open VSX Version](https://img.shields.io/open-vsx/v/contractshark/solidity-lang?logo=eclipse) [![solidity - <0.9.0](https://img.shields.io/badge/solidity-v0.9.0-2ea44f?logo=solidity)](https://github.com/manifoldfinance)
+
+</span>
+
 
 ## Motivation
 
@@ -41,6 +45,9 @@ to add without having to give up basic functionality.
 
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
 
+- [Eclipse Open VSX Registry Marketplace](https://open-vsx.org/extension/contractshark/solidity-lang)
+
+			   
 ## Extension Settings
 
 This extension contributes the following settings:
