@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "ci": "npm i -g vsce && npm run build",
-    "build": "npx vsce package",
+    "build": "npx vsce package -o dist/",
     "test": "npx ajv-cli test -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json --valid"
   },
   "bugs": {
