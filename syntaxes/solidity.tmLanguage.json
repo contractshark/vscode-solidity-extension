@@ -3,6 +3,7 @@
         "sol"
     ],
     "name": "Solidity",
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "patterns": [
         {
             "include": "#natspec"
@@ -371,7 +372,7 @@
             "name": "constant.language.time"
         },
         "constant-currency": {
-            "match": "\\b(ether|wei|gwei|finney|szabo)\\b",
+            "match": "\\b(ether|wei|gwei|nanoeth|finney|szabo)\\b",
             "name": "constant.language.currency"
         },
         "number": {
