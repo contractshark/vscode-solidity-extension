@@ -91,6 +91,9 @@
                 },
                 {
                     "include": "#natspec-tag-return"
+                },
+                {
+                    "include": "#natspec-tag-custom"
                 }
             ]
         },
@@ -109,6 +112,10 @@
         "natspec-tag-dev": {
             "match": "(@dev)\\b",
             "name": "storage.type.dev.natspec"
+        },
+        "natspec-tag-custom": {
+            "match": "(@custom:)\\b",
+            "name": "storage.type.custom.natspec"
         },
         "natspec-tag-param": {
             "match": "(@param)(\\s+([A-Za-z_]\\w*))?\\b",
@@ -1171,5 +1178,5 @@
         }
     },
     "scopeName": "source.solidity",
-    "uuid": "ad87d2cd-8575-4afe-984e-9421a3788933"
+    "uuid": "18e064f3-32b1-44de-ac9e-10f0607d7b84"
 }
