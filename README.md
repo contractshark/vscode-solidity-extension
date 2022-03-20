@@ -11,21 +11,21 @@
 
 <span align="center">
 
-
-[![vscode marketplace](https://badgen.net/vs-marketplace/v/contractshark.solidity-lang)](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang) ![Open VSX Version](https://img.shields.io/open-vsx/v/contractshark/solidity-lang?logo=eclipse) [![solidity - <0.9.0](https://img.shields.io/badge/solidity-v0.9.0-2ea44f?logo=solidity)](https://github.com/manifoldfinance)
+[![vscode marketplace](https://badgen.net/vs-marketplace/v/contractshark.solidity-lang)](https://marketplace.visualstudio.com/items?itemName=ContractShark.solidity-lang)
+![Open VSX Version](https://img.shields.io/open-vsx/v/contractshark/solidity-lang?logo=eclipse)
+[![solidity - <0.9.0](https://img.shields.io/badge/solidity-v0.9.0-2ea44f?logo=solidity)](https://github.com/manifoldfinance)
 
 </span>
 
-
 ## Motivation
 
-Every Solidity extension on Visual Studio Code's Marketplace contain multiple plugins. This can
-lead to an inconsistent developer environment, or worse create conflicting configurations that,
-under the pretense of `helping` you, do things in the background to your files without your explicit
+Every Solidity extension on Visual Studio Code's Marketplace contain multiple plugins. This can lead
+to an inconsistent developer environment, or worse create conflicting configurations that, under the
+pretense of `helping` you, do things in the background to your files without your explicit
 knowledge.
 
-Hence why this extension exists: only to provide syntax highlighting so that you can decided what
-to add without having to give up basic functionality.
+Hence why this extension exists: only to provide syntax highlighting so that you can decided what to
+add without having to give up basic functionality.
 
 ## Features
 
@@ -47,7 +47,6 @@ to add without having to give up basic functionality.
 
 - [Eclipse Open VSX Registry Marketplace](https://open-vsx.org/extension/contractshark/solidity-lang)
 
-			   
 ## Extension Settings
 
 This extension contributes the following settings:

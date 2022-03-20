@@ -5,9 +5,9 @@
   "publisher": "ContractShark",
   "icon": "assets/icon.png",
   "license": "MIT",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "engines": {
-    "vscode": "^1.55.0"
+    "vscode": "^1.65.0"
   },
   "keywords": [
     "solidity",
@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "ci": "npm i -g vsce && npm run build",
-    "build": "npx vsce package",
+    "build": "npx vsce package -o dist/",
     "test": "npx ajv-cli test -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json --valid"
   },
   "bugs": {

@@ -2,8 +2,8 @@
     "fileTypes": [
         "sol"
     ],
-  "name": "solidity",
-  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Solidity",
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "patterns": [
         {
             "include": "#natspec"
@@ -92,6 +92,9 @@
                 },
                 {
                     "include": "#natspec-tag-return"
+                },
+                {
+                    "include": "#natspec-tag-custom"
                 }
             ]
         },
@@ -111,6 +114,10 @@
             "match": "(@dev)\\b",
             "name": "storage.type.dev.natspec"
         },
+        "natspec-tag-custom": {
+            "match": "(@custom:)\\b",
+            "name": "storage.type.custom.natspec"
+        },
         "natspec-tag-param": {
             "match": "(@param)(\\s+([A-Za-z_]\\w*))?\\b",
             "captures": {
@@ -123,8 +130,15 @@
             }
         },
         "natspec-tag-return": {
-            "match": "(@return)\\b",
-            "name": "storage.type.return.natspec"
+            "match": "(@return)(\\s+([A-Za-z_]\\w*))?\\b",
+            "captures": {
+                "1": {
+                    "name": "storage.type.return.natspec"
+                },
+                "3": {
+                    "name": "variable.other.natspec"
+                }
+            }
         },
         "comment": {
             "patterns": [
@@ -358,7 +372,7 @@
             "name": "constant.language.time"
         },
         "constant-currency": {
-            "match": "\\b(ether|wei|finney|szabo)\\b",
+            "match": "\\b(ether|wei|gwei|nanoeth|finney|szabo)\\b",
             "name": "constant.language.currency"
         },
         "number": {
@@ -656,17 +670,6 @@
         "declaration-contract": {
             "patterns": [
                 {
-                    "match": "\\b(contract)\\b\\s+(\\w+)\\b\\s*(?=\\{)",
-                    "captures": {
-                        "1": {
-                            "name": "storage.type.contract"
-                        },
-                        "2": {
-                            "name": "entity.name.type.contract"
-                        }
-                    }
-                },
-                {
                     "begin": "\\b(contract)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b\\s+",
                     "end": "(?=\\{)",
                     "beginCaptures": {
@@ -686,22 +689,23 @@
                             "name": "entity.name.type.contract.extend"
                         }
                     ]
+                },
+                {
+                    "match": "\\b(contract)(\\s+([A-Za-z_]\\w*))?\\b",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.contract"
+                        },
+                        "2": {
+                            "name": "entity.name.type.contract"
+                        }
+                    }
                 }
+                
             ]
         },
         "declaration-interface": {
             "patterns": [
-                {
-                    "match": "\\b(interface)\\b\\s+(\\w+)\\b\\s*(?=\\{)",
-                    "captures": {
-                        "1": {
-                            "name": "storage.type.interface"
-                        },
-                        "2": {
-                            "name": "entity.name.type.interface"
-                        }
-                    }
-                },
                 {
                     "begin": "\\b(interface)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b\\s+",
                     "end": "(?=\\{)",
@@ -722,7 +726,19 @@
                             "name": "entity.name.type.interface.extend"
                         }
                     ]
+                },
+                {
+                    "match": "\\b(interface)(\\s+([A-Za-z_]\\w*))?\\b",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.interface"
+                        },
+                        "2": {
+                            "name": "entity.name.type.interface"
+                        }
+                    }
                 }
+                
             ]
         },
         "declaration-library": {
@@ -975,6 +991,9 @@
                         },
                         {
                             "include": "#modifier-call"
+                        },
+                        {
+                            "include": "#punctuation"
                         }
                     ]
                 },
@@ -1096,10 +1115,13 @@
             }
         },
         "function-call": {
-            "match": "\\b([A-Za-z_]\\w*)\\s*\\(",
+            "match": "\\b([A-Za-z_]\\w*)\\s*(\\()",
             "captures": {
                 "1": {
                     "name": "entity.name.function"
+                },
+                "2": {
+                    "name": "punctuation.parameters.begin"
                 }
             }
         },
@@ -1157,5 +1179,5 @@
         }
     },
     "scopeName": "source.solidity",
-    "uuid": "25f5cd46-fd8e-4a88-986a-239ae90c9877"
+    "uuid": "18e064f3-32b1-44de-ac9e-10f0607d7b84"
 }
