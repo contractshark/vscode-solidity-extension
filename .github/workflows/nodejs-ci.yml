@@ -2,7 +2,7 @@
 name: nodejs
 on:
   push:
-     paths:
+    paths:
       - "**/**"
       - "!**/*.md/**"
 
@@ -18,8 +18,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: ['14']
-        os: ['ubuntu-latest']
+        node: ["14"]
+        os: ["ubuntu-latest"]
 
     steps:
       - name: Clone repository
