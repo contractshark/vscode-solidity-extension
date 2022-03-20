@@ -7,7 +7,6 @@ node_modules
 *.tgz
 *.zip
 *.tar
-dist/
 build/
 cache
 .cache/
