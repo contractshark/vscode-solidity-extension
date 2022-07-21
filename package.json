@@ -1,26 +1,37 @@
 {
   "name": "solidity-lang",
   "displayName": "solidity-syntax",
-  "description": "solidity syntax highlighting, thats it",
+  "description": "Solidity & EVM Semantic syntax Highlighting",
   "publisher": "ContractShark",
   "icon": "assets/icon.png",
   "license": "MIT",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "engines": {
-    "vscode": "^1.65.0"
+    "vscode": "^1.67.0"
   },
   "keywords": [
     "solidity",
     "ethereum",
     "blockchain",
     "security",
-    "audit",
-    "review",
-    "developer",
+    "echidna",
+    "semantic",
+    "semantic highlighting",
     "solidity security",
     "solidity audit",
     "language",
-    "theme"
+    "theme",
+    "EVM",
+    "evm-toolkit",
+    "eth",
+    "defi",
+    "compiler",
+    "assembly",
+    "hardhat",
+    "foundry",
+    "bytecode",
+    "opcode",
+    "natspec"
   ],
   "extensionKind": [
     "ui",
@@ -39,7 +50,9 @@
     "url": "https://github.com/contractshark/vscode-extenstion.git"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets",
+    "Themes"
   ],
   "configurationDefaults": {
     "solidity": {
@@ -56,21 +69,24 @@
         ],
         "extensions": [
           ".sol",
+          ".t.sol",
           ".solidity"
         ],
         "configuration": "./language-configuration.json"
       }
     ],
-    "grammars": [
-      {
-        "language": "solidity",
-        "scopeName": "source.solidity",
-        "path": "./syntaxes/solidity.tmLanguage.json",
-        "injectTo": [
-          "source.solidity"
-        ]
-      }
-    ]
+"grammars": [
+    {
+      "language": "solidity",
+      "scopeName": "source.solidity",
+      "path": "./syntaxes/solidity.tmLanguage.json",
+      "balancedBracketScopes": [ "*" ],
+      "unbalancedBracketScopes": [ "meta.scope.case-pattern.solidity" ],
+      "injectTo": [
+        "source.solidity"
+      ]
+    }
+  ]
   },
   "devDependencies": {
     "@vscode/test-web": "^0.0.15",
