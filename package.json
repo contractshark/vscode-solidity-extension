@@ -5,7 +5,7 @@
   "publisher": "ContractShark",
   "icon": "assets/icon.png",
   "license": "MIT",
-  "version": "1.5.0",
+  "version": "1.7.0",
   "engines": {
     "vscode": "^1.67.0"
   },
@@ -75,18 +75,29 @@
         "configuration": "./language-configuration.json"
       }
     ],
-"grammars": [
-    {
-      "language": "solidity",
-      "scopeName": "source.solidity",
-      "path": "./syntaxes/solidity.tmLanguage.json",
-      "balancedBracketScopes": [ "*" ],
-      "unbalancedBracketScopes": [ "meta.scope.case-pattern.solidity" ],
-      "injectTo": [
-        "source.solidity"
-      ]
-    }
-  ]
+    "grammars": [
+      {
+        "language": "solidity",
+        "scopeName": "source.solidity",
+        "path": "./syntaxes/solidity.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.solidity.codeblock",
+        "path": "./syntaxes/codeblock.json",
+        "injectTo": [
+          "source.solidity"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.solidity": "solidity"
+        },
+        "balancedBracketScopes": [
+          "*"
+        ],
+        "unbalancedBracketScopes": [
+          "meta.scope.case-pattern.solidity"
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "@vscode/test-web": "^0.0.15",

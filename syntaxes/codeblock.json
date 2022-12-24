@@ -1,0 +1,28 @@
+{
+  "fileTypes": [],
+  "injectionSelector": "L:markup.fenced_code.block.markdown",
+  "patterns": [
+    {
+      "include": "#solidity-code-block"
+    }
+  ],
+  "repository": {
+    "solidity-code-block": {
+      "begin": "\\b(solidity)\\b(\\s+[^`~]*)?$",
+      "end": "(^|\\G)(?=\\s*[`~]{3,}\\s*$)",
+      "patterns": [
+        {
+          "begin": "(^|\\G)(\\s*)(.*)",
+          "while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)",
+          "contentName": "meta.embedded.block.solidity",
+          "patterns": [
+            {
+              "include": "source.solidity"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "markdown.solidity.codeblock"
+}
