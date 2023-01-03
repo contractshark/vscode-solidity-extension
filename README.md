@@ -1,7 +1,7 @@
 <p align="center">
 <img src='assets/icon.png' width=64>
 	<h1 align="center">solidity-lang</h1>
- <h3 align="center"> VSCode Solidity Semantic Syntax Highlighting</h3>
+ <h3 align="center"> VSCode Solidity & Yul Semantic Syntax Highlighting and Language Support</h3>
  <p align="center">
 <align="center">
 
@@ -27,15 +27,31 @@ knowledge.
 Hence why this extension exists: only to provide syntax highlighting so that you can decided what to
 add without having to give up basic functionality.
 
+## v2.0.0 Planned Features
+
+- Semantic Token support for Foundry/Dapptools 'Cheat codes'
+
+- Custom NatSpec support
+
+- Solhint/Slither comment directive support
+
+- Theme Coloring support
+
 ## Features
 
 - Solidity Syntax Highlighting
 
-- Semantic Syntax Support
+- Yul/Yulp Syntax Highlighting
+
+- Maintained and Tested
+
+- Semantic Syntax Support (Custom Tokens coming in v2.0.0)
 
 - Remote Container / Container support
 
 - NatSpec Supported Highlighting
+
+- Custom NatSpec Support coming in v2.0.0
 
 - Support ^0.5.0 to <0.9.0
 
@@ -52,6 +68,10 @@ add without having to give up basic functionality.
 This extension contributes the following settings:
 
 - `solidity-lang.enable`: enable/disable this extension
+
+## Contributing
+
+Checkout VSCode Extenstion recommendations for helpful utilities when working on the tmLanguage syntax files.
 
 ## Issues / Support
 

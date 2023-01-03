@@ -1,0 +1,1 @@
+231fd38dfb42d79ed47c0560e331fa719dffe6d378ad01b1309643e52d19f86b  dist/solidity-lang-1.6.0.vsix
