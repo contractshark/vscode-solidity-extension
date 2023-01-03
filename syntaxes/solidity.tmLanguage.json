@@ -360,6 +360,9 @@
                 },
                 {
                     "include": "#constant-currency"
+                },
+                {
+                    "include": "#constant-ucase"
                 }
             ]
         },
@@ -374,6 +377,10 @@
         "constant-currency": {
             "match": "\\b(ether|wei|gwei|nanoeth|finney|szabo)\\b",
             "name": "constant.language.currency"
+        },
+       "constant-ucase": {
+            "match": "\\b((?=\\D)[A-Z_0-9]+)\\b",
+            "name": "constant.language.ucase.solidity"
         },
         "number": {
             "patterns": [
