@@ -14,4 +14,4 @@ cache
 *-error.
 solidity-lang-*.zip
 *.vsix
-!dist/*.vsix
+dist/*.vsix

@@ -1,3 +1,10 @@
 {
-  "recommendations": ["leodevbro.blockman"]
+  "recommendations": [
+    "leodevbro.blockman",
+    "pedro-w.tmlanguage",
+    "editorconfig.editorconfig",
+    "jzmstrjp.color-the-tag-name",
+    "chouzz.vscode-better-align",
+    "annsk.alignment"
+  ]
 }
