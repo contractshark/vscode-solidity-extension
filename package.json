@@ -1,16 +1,18 @@
 {
   "name": "solidity-lang",
-  "displayName": "solidity-syntax",
-  "description": "Solidity & EVM Semantic syntax Highlighting",
+  "displayName": "Solidity+Yul Semantic Syntax",
+  "description": "Solidity & Yul Semantic syntax Highlighting amd Language Support",
   "publisher": "ContractShark",
   "icon": "assets/icon.png",
   "license": "MIT",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "engines": {
     "vscode": "^1.67.0"
   },
   "keywords": [
     "solidity",
+    "yul",
+    "yulp",
     "ethereum",
     "blockchain",
     "security",
@@ -70,29 +72,62 @@
         "extensions": [
           ".sol",
           ".t.sol",
-          ".solidity"
+          ".solidity",
+          ".slb"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "yul",
+        "aliases": [
+          "Yul",
+          "Yulp",
+          "ViaIR"
+        ],
+        "extensions": [
+          ".yul",
+          ".yulp"
         ],
         "configuration": "./language-configuration.json"
       }
     ],
-"grammars": [
-    {
-      "language": "solidity",
-      "scopeName": "source.solidity",
-      "path": "./syntaxes/solidity.tmLanguage.json",
-      "balancedBracketScopes": [ "*" ],
-      "unbalancedBracketScopes": [ "meta.scope.case-pattern.solidity" ],
-      "injectTo": [
-        "source.solidity"
-      ]
-    }
-  ]
+    "grammars": [
+      {
+        "language": "solidity",
+        "scopeName": "source.solidity",
+        "path": "./syntaxes/solidity.tmLanguage.json",
+        "balancedBracketScopes": [
+          "*"
+        ],
+        "unbalancedBracketScopes": [
+          "meta.scope.case-pattern.solidity"
+        ],
+        "injectTo": [
+          "source.solidity"
+        ]
+      },
+      {
+        "language": "yul",
+        "scopeName": "source.yul",
+        "path": "./syntaxes/yul.tmLanguage.json",
+        "balancedBracketScopes": [
+          "*"
+        ],
+        "unbalancedBracketScopes": [
+          "meta.scope.case-pattern.yul"
+        ],
+        "injectTo": [
+          "source.yul"
+        ]
+      }
+    ]
   },
   "devDependencies": {
-    "@vscode/test-web": "^0.0.15",
-    "ajv": "8.1.0",
+    "@vscode/test-web": "^0.0.33",
+    "@vscode/vsce": "^2.16.0",
+    "ajv": "8.11.2",
     "ajv-cli": "5.0.0",
-    "prettier": "2.3.2",
-    "vsce": "^1.96.1"
+    "prettier": "2.8.1",
+    "vsce": "2.15.0"
   }
 }
