@@ -479,6 +479,10 @@
     "global-variables": {
       "patterns": [
         {
+          "match": "\\b(block\\.(?:basefee|prevrandao|number|timestamp)|tx\\.gasprice)\\b",
+          "name": "variable.language.transaction"
+        },
+        {
           "match": "\\b(this)\\b",
           "name": "variable.language.this"
         },
@@ -1113,6 +1117,23 @@
         },
         "3": {
           "name": "entity.name.type.error"
+        }
+      }
+    },
+    "declaration-user-type": {
+      "match": "\\b(type)\\s+([A-Za-z_]\\w*)\\s+(is)\\s+([A-Za-z_]\\w*)\\b",
+      "captures": {
+        "1": {
+          "name": "storage.type.user-type"
+        },
+        "2": {
+          "name": "entity.name.type.user-type"
+        },
+        "3": {
+          "name": "keyword.operator.user-type"
+        },
+        "4": {
+          "name": "support.type.primitive"
         }
       }
     },
