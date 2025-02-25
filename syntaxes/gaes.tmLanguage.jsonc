@@ -1,0 +1,86 @@
+{
+  // @see {@link https://github.com/fjl/geas}
+  "name": "Geas",
+  "scopeName": "source.geas",
+  "fileTypes": ["geas"],
+  "patterns": [
+    // Comments
+    {
+      "name": "comment.line.double-semicolon.geas",
+      "match": ";;.*$"
+    },
+    // Strings
+    {
+      "name": "string.quoted.double.geas",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.geas",
+          "match": "\\\\|\\\""
+        }
+      ]
+    },
+    // Expression Macros
+    {
+      "name": "keyword.function.expression-macro.geas",
+      "match": "%\\b(abs|selector|keccak256|address)\\b"
+    },
+    // Instruction Macros
+    {
+      "name": "keyword.function.instruction-macro.geas",
+      "match": "%\\b(include|assemble|push)\\b"
+    },
+    // Labels
+    {
+      "name": "entity.name.label.geas",
+      "match": "^\\w+:$"
+    },
+    // Environment Opcodes
+    {
+      "name": "keyword.control.environment.geas",
+      "match": "\\b(address|balance|origin|caller|callvalue|calldataload|calldatasize|calldatacopy|codesize|codecopy|gasprice|returndatasize|returndatacopy|blockhash|coinbase|timestamp|number|difficulty|gaslimit|chainid|selfbalance|basefee)\\b"
+    },
+    // Trie Opcodes
+    {
+      "name": "keyword.control.trie.geas",
+      "match": "\\b(extcodesize|extcodecopy|extcodehash|sload|sstore|selfdestruct)\\b"
+    },
+    // Call Opcodes
+    {
+      "name": "keyword.control.call.geas",
+      "match": "\\b(create|call|callcode|delegatecall|create2|staticcall)\\b"
+    },
+    // Push Constants - Decimal
+    {
+      "name": "constant.numeric.decimal.geas",
+      "match": "\\b\\d+\\b"
+    },
+    // Push Constants - Hexadecimal
+    {
+      "name": "constant.numeric.hexadecimal.geas",
+      "match": "\\b0x[0-9a-fA-F]+\\b"
+    },
+    // Push Constants - Binary
+    {
+      "name": "constant.numeric.binary.geas",
+      "match": "\\b0b[01]+\\b"
+    },
+    // Push Constants - Octal
+    {
+      "name": "constant.numeric.octal.geas",
+      "match": "\\b0o[0-7]+\\b"
+    },
+    // Regular Opcodes
+    {
+      "name": "keyword.operator.arithmetic.geas",
+      "match": "\\b(stop|add|mul|sub|div|sdiv|mod|smod|addmod|mulmod|exp|signextend|lt|gt|slt|sgt|eq|iszero|and|or|xor|not|byte|shl|shr|sar|keccak256|pop|mload|mstore|mstore8|jump|jumpi|pc|msize|gas|jumpdest|revert|invalid|return)\\b"
+    },
+    // Stack Manipulation Opcodes (swap, dup, log)
+    {
+      "name": "keyword.operator.stack-manipulation.geas",
+      "match": "\\b(swap[1-6]|dup[1-6]|log[0-4])\\b"
+    }
+  ],
+  "uuid": "56D1D69F-5E8C-4FBA-8B21-95F9B343D3B4"
+}
