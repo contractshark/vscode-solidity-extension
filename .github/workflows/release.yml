@@ -47,6 +47,9 @@ jobs:
           pat: ${{ secrets.OPEN_VSX_TOKEN }}
           extensionFile: ${{ steps.create_vsix.outputs.vsixPath }}
           packagePath: ''
+      - name: Generate checksums
+        run: find dist/ -name "*.vsix" -type f -exec sha256sum {} \; > dist/checksums.sha256
+
       - name: Attach vsix to release
         uses: actions/upload-release-asset@v1
         env:

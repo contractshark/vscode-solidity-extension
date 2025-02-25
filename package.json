@@ -40,13 +40,10 @@
     "ui",
     "workspace"
   ],
-  "activationEvents": [
-    "onLanguage:solidity"
-  ],
   "scripts": {
     "ci": "npm i -g @vscode/vsce && npm run build",
     "build": "npx vsce package -o dist/",
-    "test": "npx ajv-cli test -s tests/tmLanguage.schema.json -d syntaxes/solidity.tmLanguage.json --valid",
+    "test": " npx vscode-tmgrammar-test -g syntaxes/solidity.tmLanguage.json tests/solidity.syntax-test.sol",
     "test:grammar": "node --loader ts-node/esm tests/tmgrammar.test.ts"
   },
   "bugs": {
@@ -134,7 +131,6 @@
     "ajv": "8.11.2",
     "ajv-cli": "^0.6.0",
     "prettier": "2.8.1",
-    "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
     "vscode-textmate": "^9.2.0",
     "vscode-tmgrammar-test": "^0.1.3",
