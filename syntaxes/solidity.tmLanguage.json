@@ -732,24 +732,34 @@
           },
           "patterns": [
             {
-              "match": "\\b(\\w+)\\b",
-              "name": "entity.name.type.contract.extend"
+              "match": "(\\w+)(\\s*,\\s*)?",
+              "captures": {
+                "1": {
+                  "name": "entity.name.type.contract.extend"
+                },
+                "2": {
+                  "name": "punctuation.separator"
+                }
+              }
             }
           ]
         }
       ]
     },
     "declaration-userType": {
-      "match": "\\b(type)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b",
+      "match": "\\b(type)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b\\s+(\\w+)\\b",
       "captures": {
         "1": {
-          "name": "storage.type.userType"
+          "name": "storage.type.user-type"
         },
         "2": {
-          "name": "entity.name.type.userType"
+          "name": "entity.name.type.user-type"
         },
         "3": {
-          "name": "storage.modifier.is"
+          "name": "keyword.operator.user-type"
+        },
+        "4": {
+          "name": "support.type.primitive"
         }
       }
     },
@@ -806,18 +816,7 @@
     "declaration-struct": {
       "patterns": [
         {
-          "match": "\\b(struct)(\\s+([A-Za-z_]\\w*))?\\b",
-          "captures": {
-            "1": {
-              "name": "storage.type.struct"
-            },
-            "3": {
-              "name": "entity.name.type.struct"
-            }
-          }
-        },
-        {
-          "begin": "\\b(struct)\\b\\s*(\\w+)?\\b\\s*(?=\\{)",
+          "begin": "\\b(struct)\\b\\s+(\\w+)\\b\\s*\\{",
           "beginCaptures": {
             "1": {
               "name": "storage.type.struct"
@@ -826,8 +825,24 @@
               "name": "entity.name.type.struct"
             }
           },
-          "end": "(?=\\})",
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.brace.curly.end"
+            }
+          },
           "patterns": [
+            {
+              "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s+(\\w+)\\s*;",
+              "captures": {
+                "1": {
+                  "name": "support.type.primitive"
+                },
+                "2": {
+                  "name": "variable.parameter.other"
+                }
+              }
+            },
             {
               "include": "#type-primitive"
             },
@@ -844,14 +859,25 @@
               "include": "#comment"
             }
           ]
+        },
+        {
+          "match": "\\b(struct)(\\s+([A-Za-z_]\\w*))?\\b",
+          "captures": {
+            "1": {
+              "name": "storage.type.struct"
+            },
+            "3": {
+              "name": "entity.name.type.struct"
+            }
+          }
         }
       ]
     },
     "declaration-event": {
       "patterns": [
         {
-          "begin": "\\b(event)\\b(?:\\s+(\\w+)\\b)?",
-          "end": "(?=\\))",
+          "begin": "\\b(event)\\b\\s+(\\w+)\\s*\\(",
+          "end": "\\)",
           "beginCaptures": {
             "1": {
               "name": "storage.type.event"
@@ -860,7 +886,26 @@
               "name": "entity.name.type.event"
             }
           },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.parameters.end"
+            }
+          },
           "patterns": [
+            {
+              "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s+(?:(indexed)\\s+)?(\\w+)\\b",
+              "captures": {
+                "1": {
+                  "name": "support.type.primitive"
+                },
+                "2": {
+                  "name": "storage.type.modifier.indexed"
+                },
+                "3": {
+                  "name": "variable.parameter.event"
+                }
+              }
+            },
             {
               "include": "#type-primitive"
             },
@@ -868,15 +913,8 @@
               "include": "#type-user"
             },
             {
-              "match": "\\b(?:(indexed)\\s)?(\\w+)(?:,\\s*|)",
-              "captures": {
-                "1": {
-                  "name": "storage.type.modifier.indexed"
-                },
-                "2": {
-                  "name": "variable.parameter.event"
-                }
-              }
+              "match": "\\b(indexed)\\b",
+              "name": "storage.type.modifier.indexed"
             },
             {
               "include": "#punctuation"
@@ -884,12 +922,12 @@
           ]
         },
         {
-          "match": "\\b(event)(\\s+([A-Za-z_]\\w*))?\\b",
+          "match": "\\b(event)\\b\\s+(\\w+)\\b",
           "captures": {
             "1": {
               "name": "storage.type.event"
             },
-            "3": {
+            "2": {
               "name": "entity.name.type.event"
             }
           }
@@ -943,7 +981,7 @@
     "declaration-enum": {
       "patterns": [
         {
-          "begin": "\\b(enum)\\s+(\\w+)\\b",
+          "begin": "\\b(enum)\\s+(\\w+)\\b\\s*\\{",
           "beginCaptures": {
             "1": {
               "name": "storage.type.enum"
@@ -952,11 +990,23 @@
               "name": "entity.name.type.enum"
             }
           },
-          "end": "(?=\\})",
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.brace.curly.end"
+            }
+          },
           "patterns": [
             {
-              "match": "\\b(\\w+)\\b",
-              "name": "variable.other.enummember"
+              "match": "\\b(\\w+)\\b(\\s*,\\s*)?",
+              "captures": {
+                "1": {
+                  "name": "variable.other.enummember"
+                },
+                "2": {
+                  "name": "punctuation.separator"
+                }
+              }
             },
             {
               "include": "#punctuation"
@@ -983,6 +1033,17 @@
       "begin": "\\G\\s*(?=\\()",
       "end": "(?=\\))",
       "patterns": [
+        {
+          "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s+(\\w+)\\b",
+          "captures": {
+            "1": {
+              "name": "support.type.primitive"
+            },
+            "2": {
+              "name": "variable.parameter.function"
+            }
+          }
+        },
         {
           "include": "#type-primitive"
         },
@@ -1138,14 +1199,30 @@
     "declaration-storage-mapping": {
       "patterns": [
         {
-          "begin": "\\b(mapping)\\b",
+          "begin": "\\b(mapping)\\b\\s*\\(",
           "beginCaptures": {
             "1": {
               "name": "storage.type.mapping"
             }
           },
-          "end": "(?=\\))",
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.parameters.end"
+            }
+          },
           "patterns": [
+            {
+              "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s*(=>)\\s*",
+              "captures": {
+                "1": {
+                  "name": "support.type.primitive"
+                },
+                "2": {
+                  "name": "keyword.operator.mapping"
+                }
+              }
+            },
             {
               "include": "#declaration-storage-mapping"
             },
@@ -1156,10 +1233,11 @@
               "include": "#type-user"
             },
             {
-              "include": "#punctuation"
+              "match": "=>",
+              "name": "keyword.operator.mapping"
             },
             {
-              "include": "#operator"
+              "include": "#punctuation"
             }
           ]
         },
