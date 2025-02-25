@@ -3,10 +3,12 @@
     "sol"
   ],
   "name": "Solidity",
-  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "patterns": [
     {
       "include": "#natspec"
+    },
+    {
+      "include": "#declaration-userType"
     },
     {
       "include": "#comment"
@@ -28,6 +30,9 @@
     },
     {
       "include": "#type-primitive"
+    },
+    {
+      "include": "#type-user"
     },
     {
       "include": "#type-modifier-extended-scope"
@@ -73,9 +78,6 @@
     "natspec-tags": {
       "patterns": [
         {
-          "include": "#comment-todo"
-        },
-        {
           "include": "#natspec-tag-title"
         },
         {
@@ -86,6 +88,9 @@
         },
         {
           "include": "#natspec-tag-dev"
+        },
+        {
+          "include": "#natspec-tag-inheritdoc"
         },
         {
           "include": "#natspec-tag-param"
@@ -114,9 +119,9 @@
       "match": "(@dev)\\b",
       "name": "storage.type.dev.natspec"
     },
-    "natspec-tag-custom": {
-      "match": "(@custom:)\\b",
-      "name": "storage.type.custom.natspec"
+    "natspec-tag-inheritdoc": {
+      "match": "(@inheritdoc)\\b",
+      "name": "storage.type.dev.natspec"
     },
     "natspec-tag-param": {
       "match": "(@param)(\\s+([A-Za-z_]\\w*))?\\b",
@@ -130,7 +135,7 @@
       }
     },
     "natspec-tag-return": {
-      "match": "(@return)(\\s+([A-Za-z_]\\w*))?\\b",
+      "match": "(@return)(\\s+(_?[a-z]\\w*))?\\b",
       "captures": {
         "1": {
           "name": "storage.type.return.natspec"
@@ -139,6 +144,10 @@
           "name": "variable.other.natspec"
         }
       }
+    },
+    "natspec-tag-custom": {
+      "match": "(@custom:[a-z]+(-[a-z]+)*)\\b",
+      "name": "storage.type.custom.natspec"
     },
     "comment": {
       "patterns": [
@@ -150,29 +159,15 @@
         }
       ]
     },
-    "comment-todo": {
-      "match": "(?i)\\b(FIXME|TODO|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|COMBAK|TEMP|SUPPRESS|LINT|\\w+-disable|\\w+-suppress)\\b(?-i)",
-      "name": "keyword.comment.todo"
-    },
     "comment-line": {
       "begin": "(?<!tp:)//",
       "end": "$",
-      "name": "comment.line",
-      "patterns": [
-        {
-          "include": "#comment-todo"
-        }
-      ]
+      "name": "comment.line"
     },
     "comment-block": {
       "begin": "/\\*",
       "end": "\\*/",
-      "name": "comment.block",
-      "patterns": [
-        {
-          "include": "#comment-todo"
-        }
-      ]
+      "name": "comment.block"
     },
     "operator": {
       "patterns": [
@@ -194,7 +189,7 @@
       ]
     },
     "operator-logic": {
-      "match": "(==|\\!=|<(?!<)|<=|>(?!>)|>=|\\&\\&|\\|\\||\\:(?!=)|\\?|\\!)",
+      "match": "(!|==|!=|<(?!<)|<=|>(?!>)|>=|\\&\\&|\\|\\||\\:(?!=)|\\?)",
       "name": "keyword.operator.logic"
     },
     "operator-mapping": {
@@ -202,7 +197,7 @@
       "name": "keyword.operator.mapping"
     },
     "operator-arithmetic": {
-      "match": "(\\+|\\-|\\/|\\*)",
+      "match": "(\\+|\\-|\\/|\\%|\\*)",
       "name": "keyword.operator.arithmetic"
     },
     "operator-binary": {
@@ -360,9 +355,6 @@
         },
         {
           "include": "#constant-currency"
-        },
-        {
-          "include": "#constant-ucase"
         }
       ]
     },
@@ -375,12 +367,8 @@
       "name": "constant.language.time"
     },
     "constant-currency": {
-      "match": "\\b(ether|wei|gwei|nanoeth|finney|szabo)\\b",
+      "match": "\\b(ether|wei|finney|szabo)\\b",
       "name": "constant.language.currency"
-    },
-    "constant-ucase": {
-      "match": "\\b((?=\\D)[A-Z_0-9]+)\\b",
-      "name": "constant.language.ucase.solidity"
     },
     "number": {
       "patterns": [
@@ -466,6 +454,37 @@
         }
       ]
     },
+    "type-user": {
+      "patterns": [
+        {
+          "begin": "\\b([A-Z]\\w*)\\b(?:\\[\\])(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.type"
+            }
+          },
+          "end": "(\\))",
+          "patterns": [
+            {
+              "include": "#primitive"
+            },
+            {
+              "include": "#punctuation"
+            },
+            {
+              "include": "#global"
+            },
+            {
+              "include": "#variable"
+            }
+          ]
+        },
+        {
+          "match": "\\b([A-Z]\\w*)\\b",
+          "name": "entity.name.type"
+        }
+      ]
+    },
     "global": {
       "patterns": [
         {
@@ -478,6 +497,10 @@
     },
     "global-variables": {
       "patterns": [
+        {
+          "match": "\\b(block\\.(?:basefee|prevrandao|number|timestamp)|tx\\.gasprice)\\b",
+          "name": "variable.language.transaction"
+        },
         {
           "match": "\\b(this)\\b",
           "name": "variable.language.this"
@@ -593,6 +616,9 @@
           "include": "#declaration-contract"
         },
         {
+          "include": "#declaration-userType"
+        },
+        {
           "include": "#declaration-interface"
         },
         {
@@ -630,10 +656,16 @@
           "include": "#type-primitive"
         },
         {
+          "include": "#type-user"
+        },
+        {
           "include": "#type-modifier-access"
         },
         {
           "include": "#type-modifier-immutable"
+        },
+        {
+          "include": "#type-modifier-extend-scope"
         },
         {
           "include": "#type-modifier-payable"
@@ -674,6 +706,17 @@
     "declaration-contract": {
       "patterns": [
         {
+          "match": "\\b(contract)\\b\\s+(\\w+)\\b\\s*(?=\\{)",
+          "captures": {
+            "1": {
+              "name": "storage.type.contract"
+            },
+            "2": {
+              "name": "entity.name.type.contract"
+            }
+          }
+        },
+        {
           "begin": "\\b(contract)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b\\s+",
           "end": "(?=\\{)",
           "beginCaptures": {
@@ -689,26 +732,50 @@
           },
           "patterns": [
             {
-              "match": "\\b(\\w+)\\b",
-              "name": "entity.name.type.contract.extend"
+              "match": "(\\w+)(\\s*,\\s*)?",
+              "captures": {
+                "1": {
+                  "name": "entity.name.type.contract.extend"
+                },
+                "2": {
+                  "name": "punctuation.separator"
+                }
+              }
             }
           ]
-        },
-        {
-          "match": "\\b(contract)(\\s+([A-Za-z_]\\w*))?\\b",
-          "captures": {
-            "1": {
-              "name": "storage.type.contract"
-            },
-            "2": {
-              "name": "entity.name.type.contract"
-            }
-          }
         }
       ]
     },
+    "declaration-userType": {
+      "match": "\\b(type)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b\\s+(\\w+)\\b",
+      "captures": {
+        "1": {
+          "name": "storage.type.user-type"
+        },
+        "2": {
+          "name": "entity.name.type.user-type"
+        },
+        "3": {
+          "name": "keyword.operator.user-type"
+        },
+        "4": {
+          "name": "support.type.primitive"
+        }
+      }
+    },
     "declaration-interface": {
       "patterns": [
+        {
+          "match": "\\b(interface)\\b\\s+(\\w+)\\b\\s*(?=\\{)",
+          "captures": {
+            "1": {
+              "name": "storage.type.interface"
+            },
+            "2": {
+              "name": "entity.name.type.interface"
+            }
+          }
+        },
         {
           "begin": "\\b(interface)\\b\\s+(\\w+)\\b\\s+\\b(is)\\b\\s+",
           "end": "(?=\\{)",
@@ -727,19 +794,11 @@
             {
               "match": "\\b(\\w+)\\b",
               "name": "entity.name.type.interface.extend"
+            },
+            {
+              "include": "#comment"
             }
           ]
-        },
-        {
-          "match": "\\b(interface)(\\s+([A-Za-z_]\\w*))?\\b",
-          "captures": {
-            "1": {
-              "name": "storage.type.interface"
-            },
-            "2": {
-              "name": "entity.name.type.interface"
-            }
-          }
         }
       ]
     },
@@ -757,18 +816,7 @@
     "declaration-struct": {
       "patterns": [
         {
-          "match": "\\b(struct)(\\s+([A-Za-z_]\\w*))?\\b",
-          "captures": {
-            "1": {
-              "name": "storage.type.struct"
-            },
-            "3": {
-              "name": "entity.name.type.struct"
-            }
-          }
-        },
-        {
-          "begin": "\\b(struct)\\b\\s*(\\w+)?\\b\\s*(?=\\{)",
+          "begin": "\\b(struct)\\b\\s+(\\w+)\\b\\s*\\{",
           "beginCaptures": {
             "1": {
               "name": "storage.type.struct"
@@ -777,10 +825,29 @@
               "name": "entity.name.type.struct"
             }
           },
-          "end": "(?=\\})",
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.brace.curly.end"
+            }
+          },
           "patterns": [
             {
+              "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s+(\\w+)\\s*;",
+              "captures": {
+                "1": {
+                  "name": "support.type.primitive"
+                },
+                "2": {
+                  "name": "variable.parameter.other"
+                }
+              }
+            },
+            {
               "include": "#type-primitive"
+            },
+            {
+              "include": "#type-user"
             },
             {
               "include": "#variable"
@@ -792,14 +859,25 @@
               "include": "#comment"
             }
           ]
+        },
+        {
+          "match": "\\b(struct)(\\s+([A-Za-z_]\\w*))?\\b",
+          "captures": {
+            "1": {
+              "name": "storage.type.struct"
+            },
+            "3": {
+              "name": "entity.name.type.struct"
+            }
+          }
         }
       ]
     },
     "declaration-event": {
       "patterns": [
         {
-          "begin": "\\b(event)\\b(?:\\s+(\\w+)\\b)?",
-          "end": "(?=\\))",
+          "begin": "\\b(event)\\b\\s+(\\w+)\\s*\\(",
+          "end": "\\)",
           "beginCaptures": {
             "1": {
               "name": "storage.type.event"
@@ -808,20 +886,35 @@
               "name": "entity.name.type.event"
             }
           },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.parameters.end"
+            }
+          },
           "patterns": [
+            {
+              "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s+(?:(indexed)\\s+)?(\\w+)\\b",
+              "captures": {
+                "1": {
+                  "name": "support.type.primitive"
+                },
+                "2": {
+                  "name": "storage.type.modifier.indexed"
+                },
+                "3": {
+                  "name": "variable.parameter.event"
+                }
+              }
+            },
             {
               "include": "#type-primitive"
             },
             {
-              "match": "\\b(?:(indexed)\\s)?(\\w+)(?:,\\s*|)",
-              "captures": {
-                "1": {
-                  "name": "storage.type.modifier.indexed"
-                },
-                "2": {
-                  "name": "variable.parameter.event"
-                }
-              }
+              "include": "#type-user"
+            },
+            {
+              "match": "\\b(indexed)\\b",
+              "name": "storage.type.modifier.indexed"
             },
             {
               "include": "#punctuation"
@@ -829,12 +922,12 @@
           ]
         },
         {
-          "match": "\\b(event)(\\s+([A-Za-z_]\\w*))?\\b",
+          "match": "\\b(event)\\b\\s+(\\w+)\\b",
           "captures": {
             "1": {
               "name": "storage.type.event"
             },
-            "3": {
+            "2": {
               "name": "entity.name.type.event"
             }
           }
@@ -888,7 +981,7 @@
     "declaration-enum": {
       "patterns": [
         {
-          "begin": "\\b(enum)\\s+(\\w+)\\b",
+          "begin": "\\b(enum)\\s+(\\w+)\\b\\s*\\{",
           "beginCaptures": {
             "1": {
               "name": "storage.type.enum"
@@ -897,14 +990,29 @@
               "name": "entity.name.type.enum"
             }
           },
-          "end": "(?=\\})",
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.brace.curly.end"
+            }
+          },
           "patterns": [
             {
-              "match": "\\b(\\w+)\\b",
-              "name": "variable.other.enummember"
+              "match": "\\b(\\w+)\\b(\\s*,\\s*)?",
+              "captures": {
+                "1": {
+                  "name": "variable.other.enummember"
+                },
+                "2": {
+                  "name": "punctuation.separator"
+                }
+              }
             },
             {
               "include": "#punctuation"
+            },
+            {
+              "include": "#comment"
             }
           ]
         },
@@ -926,7 +1034,21 @@
       "end": "(?=\\))",
       "patterns": [
         {
+          "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s+(\\w+)\\b",
+          "captures": {
+            "1": {
+              "name": "support.type.primitive"
+            },
+            "2": {
+              "name": "variable.parameter.function"
+            }
+          }
+        },
+        {
           "include": "#type-primitive"
+        },
+        {
+          "include": "#type-user"
         },
         {
           "include": "#type-modifier-extended-scope"
@@ -995,7 +1117,7 @@
               "include": "#modifier-call"
             },
             {
-              "include": "#punctuation"
+              "include": "#comment"
             }
           ]
         },
@@ -1077,14 +1199,30 @@
     "declaration-storage-mapping": {
       "patterns": [
         {
-          "begin": "\\b(mapping)\\b",
+          "begin": "\\b(mapping)\\b\\s*\\(",
           "beginCaptures": {
             "1": {
               "name": "storage.type.mapping"
             }
           },
-          "end": "(?=\\))",
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.parameters.end"
+            }
+          },
           "patterns": [
+            {
+              "match": "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b\\s*(=>)\\s*",
+              "captures": {
+                "1": {
+                  "name": "support.type.primitive"
+                },
+                "2": {
+                  "name": "keyword.operator.mapping"
+                }
+              }
+            },
             {
               "include": "#declaration-storage-mapping"
             },
@@ -1092,10 +1230,14 @@
               "include": "#type-primitive"
             },
             {
-              "include": "#punctuation"
+              "include": "#type-user"
             },
             {
-              "include": "#operator"
+              "match": "=>",
+              "name": "keyword.operator.mapping"
+            },
+            {
+              "include": "#punctuation"
             }
           ]
         },
@@ -1116,14 +1258,28 @@
         }
       }
     },
+    "declaration-user-type": {
+      "match": "\\b(type)\\s+([A-Za-z_]\\w*)\\s+(is)\\s+([A-Za-z_]\\w*)\\b",
+      "captures": {
+        "1": {
+          "name": "storage.type.user-type"
+        },
+        "2": {
+          "name": "entity.name.type.user-type"
+        },
+        "3": {
+          "name": "keyword.operator.user-type"
+        },
+        "4": {
+          "name": "support.type.primitive"
+        }
+      }
+    },
     "function-call": {
-      "match": "\\b([A-Za-z_]\\w*)\\s*(\\()",
+      "match": "\\b([A-Za-z_]\\w*)\\s*\\(",
       "captures": {
         "1": {
           "name": "entity.name.function"
-        },
-        "2": {
-          "name": "punctuation.parameters.begin"
         }
       }
     },
@@ -1181,5 +1337,5 @@
     }
   },
   "scopeName": "source.solidity",
-  "uuid": "18e064f3-32b1-44de-ac9e-10f0607d7b84"
+  "uuid": "4a2eb52d-02e5-46fd-848a-0648e20ef769"
 }
